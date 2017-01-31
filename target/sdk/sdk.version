@@ -1,5 +1,5 @@
-sdk.name=Java EE 6 Web Profile
-runtime.id=neo-javaee6-wp
-release.version=2.99.12
-runtime.version=2.99.12
+sdk.name=Java Web Tomcat 7
+runtime.id=neo-java-web
+release.version=2.65.5
+runtime.version=2.65.5
 structure.version=8.0.0

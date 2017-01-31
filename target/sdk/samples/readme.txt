@@ -2,9 +2,9 @@
 # Welcome to the SAP HANA Cloud Platform SDK Samples #
 ######################################################
 
-Runtime    : Java EE 6 Web Profile
-Version    : 2.99.12
-Build Date : 2016-11-17
+Runtime    : Java Web Tomcat 7
+Version    : 2.65.5
+Build Date : 2016-12-01
 
 
 1. Introduction
@@ -17,9 +17,9 @@ We focused on Eclipse and Maven for their wide adoption, but the principles appl
 (1) As a prerequisite you will need to install the SAP HANA Cloud Platform Tools for Java (Eclipse).
 For more information about installing and configuring these tools, see https://tools.hana.ondemand.com.
 
-(2) As a prerequisite you will have to create a server runtime environment called "Java EE 6 Web Profile".
-You can do so through the menu: Window->Preferences->Server->Runtime Environment->Add...->SAP->Java EE 6 Web Profile...
-If you imported a sample not having done the above you will have an error: "Faceted Project Problem: Target runtime Java EE 6 Web Profile is not defined".
+(2) As a prerequisite you will have to create a server runtime environment called "Java Web Tomcat 7".
+You can do so through the menu: Window->Preferences->Server->Runtime Environment->Add...->SAP->Java Web Tomcat 7...
+If you imported a sample not having done the above you will have an error: "Faceted Project Problem: Target runtime Java Web Tomcat 7 is not defined".
 You can now do as described above or simply run the sample which will guide you through the creation of the runtime: Run As->Run on Server...
 
 Import Steps for Eclipse projects:

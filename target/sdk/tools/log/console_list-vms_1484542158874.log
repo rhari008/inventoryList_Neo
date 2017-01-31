@@ -1,0 +1,7 @@
+2017-01-16 10:19:19,170 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --account hcppm --host eu1.hana.ondemand.com --user i048564
+2017-01-16 10:19:20,563 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [list-vms]
+2017-01-16 10:19:21,161 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-16 10:19:21,166 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-vms] init() finished for [603] ms
+2017-01-16 10:19:26,921 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-vms] run() finished for [5750] ms
+2017-01-16 10:19:26,921 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-vms] cleanup() finished for [0] ms
+2017-01-16 10:19:26,921 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-vms] finished successfully for [6358] ms

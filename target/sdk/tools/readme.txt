@@ -2,9 +2,9 @@
 # Welcome to the SAP HANA Cloud Platform SDK Tools #
 ####################################################
 
-Runtime    : Java EE 6 Web Profile
-Version    : 2.99.12
-Build Date : 2016-11-17
+Runtime    : Java Web Tomcat 7
+Version    : 2.65.5
+Build Date : 2016-12-01
 
 
 1. Working Directory
@@ -12,7 +12,7 @@ Build Date : 2016-11-17
 Open the command prompt and change the current directory to the tools folder of the SAP HANA Cloud Platform SDK.
 
 Example:
-    cd sdk-2.99.12
+    cd sdk-2.65.5
     cd tools
 
 2. Proxy Settings

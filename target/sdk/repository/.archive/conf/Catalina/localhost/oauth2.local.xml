@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- docBase path is relative to the corresponding appBase folder -->
+<Context docBase="../systemapps/com.sap.cloud.security.oauth2.as.local.war">
+<Loader className="org.apache.catalina.loader.VirtualWebappLoader"
+            virtualClasspath="${catalina.home}/impl/com.sap.security.core.server.csi.jar;${catalina.home}/impl/com.sap.cloud.security.oauth2.commons.jar;${catalina.home}/impl/com.sap.cloud.security.oauth2.as.commons.jar"/>
+</Context>

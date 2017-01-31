@@ -1,0 +1,6 @@
+2017-01-16 10:25:04,733 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   
+2017-01-16 10:25:06,024 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [list-ssh-tunnels]
+2017-01-16 10:25:06,024 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-ssh-tunnels] init() finished for [0] ms
+2017-01-16 10:25:07,034 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-ssh-tunnels] run() finished for [1009] ms
+2017-01-16 10:25:07,035 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-ssh-tunnels] cleanup() finished for [0] ms
+2017-01-16 10:25:07,038 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [list-ssh-tunnels] finished successfully for [1014] ms

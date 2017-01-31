@@ -15,11 +15,7 @@
 
     <!-- Declare the JNDI lookup of destination -->
     <resource-ref>
-        <res-ref-name>outbound-internet-destination</res-ref-name>
-        <res-type>com.sap.core.connectivity.api.http.HttpDestination</res-type>
-    </resource-ref>
-    <resource-ref>
-        <res-ref-name>connectivity/DestinationFactory</res-ref-name>
-        <res-type>com.sap.core.connectivity.api.DestinationFactory</res-type>
+    <res-ref-name>connectivityConfiguration</res-ref-name>
+    <res-type>com.sap.core.connectivity.api.configuration.ConnectivityConfiguration</res-type>
     </resource-ref>
 </web-app>

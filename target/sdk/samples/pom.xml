@@ -20,11 +20,11 @@
     <properties>
         <!-- Properties that hold information on the location, version and plugin of the SAP HANA Cloud Platform SDK -->
         <sap.cloud.sdk.path>${project.basedir}/../..</sap.cloud.sdk.path>
-        <sap.cloud.sdk.version>2.99.12</sap.cloud.sdk.version>
-        <sap.cloud.sdk.plugin>neo-javaee6-wp-maven-plugin</sap.cloud.sdk.plugin>
+        <sap.cloud.sdk.version>2.65.5</sap.cloud.sdk.version>
+        <sap.cloud.sdk.plugin>neo-java-web-maven-plugin</sap.cloud.sdk.plugin>
 
         <!-- Property that holds the supported JDK version for the given SAP HANA Cloud Platform SDK -->
-        <sap.cloud.jdk.version>1.6</sap.cloud.jdk.version>
+        <sap.cloud.jdk.version>1.7</sap.cloud.jdk.version>
 
         <!-- Properties for account, user name, and password that are required to access the SAP HANA Cloud Platform -->
         <!-- data center for the cloud integration tests must be provided as Maven properties, e.g.: -->
@@ -48,6 +48,7 @@
         <local.server.jmx.port>9004</local.server.jmx.port>
         <local.server.http.port>9080</local.server.http.port>
         <local.server.https.port>9443</local.server.https.port>
+        <local.server.config.service.port>9087</local.server.config.service.port>
         <local.server.ajp.port>9009</local.server.ajp.port>
 
         <!-- Property setting source encoding to UTF-8 -->
@@ -58,10 +59,10 @@
     </properties>
 
     <dependencies>
-        <!-- The SAP HANA Cloud Platform Java EE 6 Web Profile API -->
+        <!-- The SAP HANA Cloud Platform Java Web Tomcat 7 API -->
         <dependency>
             <groupId>com.sap.cloud</groupId>
-            <artifactId>neo-javaee6-wp-api</artifactId>
+            <artifactId>neo-java-web-api</artifactId>
             <version>${sap.cloud.sdk.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -126,8 +127,8 @@
         <module>explore-ui5</module>
         <module>hello-world</module>
         <module>mail</module>
-        <module>persistence-with-ejb</module>
         <module>persistence-with-jdbc</module>
+        <module>persistence-with-jpa</module>
         <module>websocket</module>
     </modules>
 
@@ -387,7 +388,7 @@
                                 </goals>
                             </execution>
                             <!-- This execution can be overridden in the sample pom.xml in order to execute additional steps 
-                                between deployment and start of the sample application. The additional execution must be specified with the neo-javaee6-wp-maven-plugin 
+                                between deployment and start of the sample application. The additional execution must be specified with the neo-java-web-maven-plugin 
                                 and the same id "prepare-cloud-application" and phase "pre-integration-test" -->
                             <execution>
                                 <id>prepare-cloud-application</id>
@@ -506,6 +507,7 @@
                             <sdkInstallPath>${sap.cloud.sdk.path}</sdkInstallPath>
                             <location>${local.server.root}</location>
                             <shutdownPort>${local.server.shutdown.port}</shutdownPort>
+                            <configServicePort>${local.server.config.service.port}</configServicePort>
                             <httpPort>${local.server.http.port}</httpPort>
                             <httpsPort>${local.server.https.port}</httpsPort>
                             <jmxPort>${local.server.jmx.port}</jmxPort>

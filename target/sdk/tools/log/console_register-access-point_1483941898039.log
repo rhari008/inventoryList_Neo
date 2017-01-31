@@ -1,0 +1,22 @@
+2017-01-09 11:34:58,339 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --account hcppm --host https://eu1.hana.ondemand.com --name htesth --user i048564
+2017-01-09 11:34:59,662 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [register-access-point]
+2017-01-09 11:35:00,443 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-09 11:35:00,454 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [register-access-point] init() finished for [791] ms
+2017-01-09 11:35:13,898 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [register-access-point] cleanup() finished for [0] ms
+2017-01-09 11:35:13,914 FATAL [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: (!) ERROR: Unable to register access point for the specified virtual machine.; Unexpected response code from server! Code: 500, Internal error id: 45ba6b9b-7492-43fa-8a12-dcb46a6a488d
+com.sap.jpaas.infrastructure.console.exception.CommandException: Unable to register access point for the specified virtual machine.
+	at com.sap.core.admin.server.domain.cmd.compute.ManageAccessPointBaseCommand.manageAccessPoint(ManageAccessPointBaseCommand.java:21)
+	at com.sap.core.admin.server.domain.cmd.compute.RegisterAccessPointCommand.run(RegisterAccessPointCommand.java:26)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:183)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:144)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.executeCommand(ConsoleClient.java:236)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.run(ConsoleClient.java:182)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.main(ConsoleClient.java:79)
+Caused by: java.lang.IllegalStateException: Unexpected response code from server! Code: 500, Internal error id: 45ba6b9b-7492-43fa-8a12-dcb46a6a488d
+	at com.sap.core.admin.server.domain.cmd.compute.ExceptionHandler.handleError(ExceptionHandler.java:348)
+	at com.sap.core.admin.server.domain.cmd.compute.ExceptionHandler.checkUpdateForErrors(ExceptionHandler.java:129)
+	at com.sap.core.admin.server.domain.cmd.compute.ComputeRestClient.manageAccessPoint(ComputeRestClient.java:226)
+	at com.sap.core.admin.server.domain.cmd.compute.ComputeRestClient.registerAccessPoint(ComputeRestClient.java:195)
+	at com.sap.core.admin.server.domain.cmd.compute.RegisterAccessPointCommand.callRestClient(RegisterAccessPointCommand.java:39)
+	at com.sap.core.admin.server.domain.cmd.compute.ManageAccessPointBaseCommand.manageAccessPoint(ManageAccessPointBaseCommand.java:17)
+	... 6 more

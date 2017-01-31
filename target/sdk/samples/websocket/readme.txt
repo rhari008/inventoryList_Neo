@@ -17,23 +17,9 @@ Such browsers are Internet Explorer 10 and higher, FireFox 24 and higher, Chrome
 
 The sample UI can be reached under 'http://localhost:8080/websocket/'.
 
-2. Prerequisites for execution on the Cloud
+2. Prerequisites for execution of the Selenium Web driver integration tests from Maven and within Eclipse
 
-2.1 Deploy the application requesting a Java 7 runtime from the Eclipse IDE
-
-Make sure that your project's Java facet has version 1.7. You can do this in
-Project > Properties > Project Facets. 
-Having configured this, when you deploy the application on the Cloud, it will be automatically deployed with Java 7.
-
-2.2 Deploy the application requesting Java 7 runtime using the console client
-
-When deploying with SAP HANA Cloud Platform console client, specify --java-version 7:
-
-neo deploy --java-version 7 ...
-
-3. Prerequisites for execution of the Selenium Web driver integration tests from Maven and within Eclipse
-
-3.1 Install Firefox browser
+2.1 Install Firefox browser
 
 The sample integration tests show you how to use Selenium Web driver ("http://seleniumhq.org") to automatically test
 the application. They specifically use the Selenium Firefox Web driver which is easiest to set up. 

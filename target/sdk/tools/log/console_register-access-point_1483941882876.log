@@ -1,0 +1,18 @@
+2017-01-09 11:34:43,397 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --account hcppm --host https://eu1.hana.ondemand.com --name htesth
+2017-01-09 11:34:44,733 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [register-access-point]
+2017-01-09 11:34:45,385 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-09 11:34:45,389 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [register-access-point] cleanup() finished for [0] ms
+2017-01-09 11:34:45,396 FATAL [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: (!) ERROR; -u or --user not specified. Provide user name or e-mail to login to specified host
+com.sap.jpaas.infrastructure.console.exception.CommandException
+	at com.sap.jpaas.infrastructure.console.command.RemoteCommand.initWithNoPasswordCheck(RemoteCommand.java:51)
+	at com.sap.core.admin.server.domain.cmd.compute.GCUBaseCommand.init(GCUBaseCommand.java:30)
+	at com.sap.core.admin.server.domain.cmd.compute.GCUBaseServerCommand.init(GCUBaseServerCommand.java:24)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:171)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:144)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.executeCommand(ConsoleClient.java:236)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.run(ConsoleClient.java:182)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.main(ConsoleClient.java:79)
+Caused by: com.beust.jcommander.ParameterException: -u or --user not specified. Provide user name or e-mail to login to specified host
+	at com.sap.jpaas.infrastructure.console.util.CheckHelper.checkArgSpecified(CheckHelper.java:21)
+	at com.sap.jpaas.infrastructure.console.command.RemoteCommand.initWithNoPasswordCheck(RemoteCommand.java:48)
+	... 7 more

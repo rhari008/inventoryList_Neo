@@ -1,0 +1,4 @@
+2017-01-16 10:32:34,349 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --vm-id aed1404f-a8ff-469b-9baf-4cbc2f551e46 --account hcppm --host eu1.hana.ondemand.com --user i04864 --port 60603
+2017-01-16 10:32:35,806 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [open-ssh-tunnel]
+2017-01-16 10:32:36,452 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-16 10:32:36,461 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] init() finished for [655] ms

@@ -2,9 +2,9 @@
 # Welcome to the SAP HANA Cloud Platform SDK #
 ##############################################
 
-Runtime    : Java EE 6 Web Profile
-Version    : 2.99.12
-Build Date : 2016-11-17
+Runtime    : Java Web Tomcat 7
+Version    : 2.65.5
+Build Date : 2016-12-01
 
 
 1. Introduction

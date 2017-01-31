@@ -1,0 +1,19 @@
+2017-01-16 10:30:02,181 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --vm-id aed1404f-a8ff-469b-9baf-4cbc2f551e46 --account hcppm --host eu1.hana.ondemand.com --user i04864
+2017-01-16 10:30:03,486 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [open-ssh-tunnel]
+2017-01-16 10:30:07,503 ERROR [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Status cannot be obtained within 4 seconds!
+2017-01-16 10:30:09,271 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-16 10:30:09,280 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] init() finished for [5793] ms
+2017-01-16 10:30:25,256 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] cleanup() finished for [0] ms
+2017-01-16 10:30:25,284 FATAL [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: (!) ERROR: Cannot establish connection. Please try again.
+com.sap.jpaas.infrastructure.console.exception.CommandException: Cannot establish connection. Please try again.
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.run(OpenSSHTunnelCommand.java:88)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:183)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:144)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.executeCommand(ConsoleClient.java:236)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.run(ConsoleClient.java:182)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.main(ConsoleClient.java:79)
+Caused by: java.lang.Exception: Cannot establish connection. Please try again.
+	at com.sap.cloud.sshtunnel.client.SSHAdminClient.getConnectionInfo(SSHAdminClient.java:65)
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.getConnectionInfo(OpenSSHTunnelCommand.java:139)
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.run(OpenSSHTunnelCommand.java:76)
+	... 5 more

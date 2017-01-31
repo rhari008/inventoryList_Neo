@@ -3,10 +3,10 @@
 ##############################################################
 
 The connectivity sample covers two basic connectivity scenarios:
- - Outbound internet destinations usage
+ - Outbound Internet destinations usage
  - On-demand to on-premise connectivity scenario.
 
-Prerequisites for execution on a Local Server from the Eclipse IDE
+Prerequisites for the execution of the outbound Internet destination scenario in a local Server from the Eclipse IDE
 
 1. Configure the destination 'outbound-internet-destination'
 In order to run the sample from your Eclipse IDE, you need to import a destination into the local server.
@@ -20,7 +20,7 @@ In this way, the integration tests will successfully detect the destination.
 NOTE: If you need to create yourself another local server in the Eclipse IDE, you have to do it separately 
 in the 'Servers' view.
 
-For more information, see https://help.hana.ondemand.com/help/frameset.htm?e592cf6cbb57101495d3c28507d20f1b.html
+For more information, see https://help.hana.ondemand.com/help/frameset.htm?22123f544cb64372959b4a1bd8e234c4.html
 
 
 2. (Optional) Configure an HTTP proxy for the outbound Internet connection
@@ -32,25 +32,22 @@ the 'Arguments' tab and add your proxy definition as 'VM arguments' in the follo
 -Dhttps.proxyHost=<your_proxy_host> -Dhttps.proxyPort=<your_proxy_port>
 
 
-On-premise destinations
+Prerequisites for the execution of the on-demand to on-premise connectivity scenario in the cloud
 
 1. Configure on-premise destinations.
 On-premise destinations are used in a more complex scenario when an cloud application wants to access resources from an on-premise backend system.
-The following destinations, according to your authentication case:
-  - 'backend-no-auth-destination'
-  - 'backend-basic-auth-destination'
-  should be uploaded to the cloud server application
-Both destinations are located in this sample '/destinations' folder.
+The following destination 'backend-no-auth-destination' should be uploaded to the cloud server application.
+It is located in this sample's '/destinations' folder.
 
-For more information, see https://help.hana.ondemand.com/help/frameset.htm?e76f9e75bb571014a7218bcd30a8771b.html
+For more information, see https://help.hana.ondemand.com/help/frameset.htm?474eae1b69c9434b9dce0314b8d2b6b1.html
 
 2. Run backend service application
 
-The application WAR files located in the '/onpremise' folder of the sample have to be deployed as backend applications.
-You can use an arbitrary local Java Web Container for this, like the local server created in Eclipse
+The application WAR file located in the '/onpremise' folder of the sample has to be deployed as backend application.
+You can use an arbitrary local Java Web Container for this, like the local server created in Eclipse.
 
 For more information, see https://help.hana.ondemand.com/help/frameset.htm?e59dc589bb57101480939e290c55e680.html
 
-In order to use on-premise backend services in a cloud application, the SAP Hana Cloud Connector should be set up and configured.
+In order to use on-premise backend services in a cloud application, the SAP HANA Cloud Connector should be set up and configured.
 
 For more information, see https://help.hana.ondemand.com/help/frameset.htm?e6c7616abb5710148cfcf3e75d96d596.html

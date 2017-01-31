@@ -1,0 +1,9 @@
+2017-01-09 10:19:05,851 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --vm-id aed1404f-a8ff-469b-9baf-4cbc2f551e46 --account hcppm --host https://eu1.hana.ondemand.com --user i048564
+2017-01-09 10:19:07,425 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [open-ssh-tunnel]
+2017-01-09 10:19:08,600 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-09 10:19:08,609 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] init() finished for [1184] ms
+2017-01-09 10:19:45,353 INFO  [main] com.sap.cloud.sshtunnel.client.proxyagent.DaemonProcessController: Timeout reached. Did not receive eyecatch com.sap.cloud.sshtunnel.client.proxyagent.TunnelProcessMBean:started
+2017-01-09 10:19:48,354 INFO  [main] com.sap.cloud.sshtunnel.client.proxyagent.DaemonProcessController: Background process did not return exit value within 3000 ms
+2017-01-09 10:19:51,081 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] run() finished for [42472] ms
+2017-01-09 10:19:51,081 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] cleanup() finished for [0] ms
+2017-01-09 10:19:51,082 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] finished successfully for [43657] ms

@@ -4,11 +4,6 @@ com.sap.cloud.security.oauth2
 com.sap.cloud.security.password
 com.sap.conn.jco
 com.sap.conn.jco.monitor
-com.sap.core.connectivity.api
-com.sap.core.connectivity.api.authentication
-com.sap.core.connectivity.api.configuration
-com.sap.core.connectivity.api.http
-com.sap.core.connectivity.api.ldap
 com.sap.core.jpaas.security.auth.api
 com.sap.ecm.api
 com.sap.security.auth.login

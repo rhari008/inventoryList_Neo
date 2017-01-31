@@ -2,124 +2,132 @@ package com.sap.cloud.sample.connectivity;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
 
-import static java.net.HttpURLConnection.HTTP_OK;
-
+import javax.annotation.Resource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sap.core.connectivity.api.http.HttpDestination;
-import com.sap.core.connectivity.api.DestinationFactory;
+import com.sap.cloud.account.TenantContext;
+import com.sap.core.connectivity.api.configuration.ConnectivityConfiguration;
+import com.sap.core.connectivity.api.configuration.DestinationConfiguration;
 
 /**
  * Servlet class making http calls to specified http destinations.
  * Destinations are used in the following example connectivity scenarios:<br>
  * - Connecting to an outbound Internet resource using HTTP destinations<br>
  * - Connecting to an on-premise backend using on premise HTTP destinations,<br>
- *   where the destinations could have no authentication or BasicAuthentication.<br>
- *
+ *   where the destinations have no authentication.<br>
  */
 public class ConnectivityServlet extends HttpServlet {
+    @Resource
+    private TenantContext  tenantContext;
+
     private static final long serialVersionUID = 1L;
     private static final int COPY_CONTENT_BUFFER_SIZE = 1024;
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectivityServlet.class);
 
+    private static final String ON_PREMISE_PROXY = "OnPremise";
+
     /** {@inheritDoc} */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpClient httpClient = null;
+
+        HttpURLConnection urlConnection = null;
         String destinationName = request.getParameter("destname");
+
+        // The default request to the Servlet will use outbound-internet-destination
+        if (destinationName == null) {
+            destinationName = "outbound-internet-destination";
+        }
+
         try {
-            // Get HTTP destination
+            // Look up the connectivity configuration API
             Context ctx = new InitialContext();
-            HttpDestination destination = null;
-            if (destinationName != null) {
-                DestinationFactory destinationFactory = (DestinationFactory) ctx.lookup(DestinationFactory.JNDI_NAME);
-                destination = (HttpDestination) destinationFactory.getDestination(destinationName);
-            } else {
-                // The default request to the Servlet will use outbound-internet-destination
-                destinationName = "outbound-internet-destination";
-                destination = (HttpDestination) ctx.lookup("java:comp/env/" +  destinationName);
-            }
-            // Create HTTP client
-            httpClient = destination.createHttpClient();
+            ConnectivityConfiguration configuration =
+                    (ConnectivityConfiguration) ctx.lookup("java:comp/env/connectivityConfiguration");
 
-            // Execute HTTP request
-            HttpGet httpGet = new HttpGet();
-            HttpResponse httpResponse = httpClient.execute(httpGet);
+            // Get destination configuration for "destinationName"
+            DestinationConfiguration destConfiguration = configuration.getConfiguration(destinationName);
 
-            // Check response status code
-            int statusCode = httpResponse.getStatusLine().getStatusCode();
-            if (statusCode != HTTP_OK) {
-                throw new ServletException("Expected response status code is 200 but it is " + statusCode + " .");
+            if (destConfiguration == null) {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        String.format("Destination %s is not found. Hint:"
+                                + " Make sure to have the destination configured.", destinationName));
+                return;
             }
+
+            // Get the destination URL
+            String value = destConfiguration.getProperty("URL");
+            URL url = new URL(value);
+
+            String proxyType = destConfiguration.getProperty("ProxyType");
+            Proxy proxy = getProxy(proxyType);
+
+            urlConnection = (HttpURLConnection) url.openConnection(proxy);
+
+            injectHeader(urlConnection, proxyType);
 
             // Copy content from the incoming response to the outgoing response
-            HttpEntity entity = httpResponse.getEntity();
-            if (entity != null) {
-                InputStream instream = entity.getContent();
-                try {
-                    byte[] buffer = new byte[COPY_CONTENT_BUFFER_SIZE];
-                    int len;
-                    while ((len = instream.read(buffer)) != -1) {
-                        response.getOutputStream().write(buffer, 0, len);
-                    }
-                } catch (IOException e) {
-                    // In case of an IOException the connection will be released
-                    // back to the connection manager automatically
-                    throw e;
-                } catch (RuntimeException e) {
-                    // In case of an unexpected exception you may want to abort
-                    // the HTTP request in order to shut down the underlying
-                    // connection immediately.
-                    httpGet.abort();
-                    throw e;
-                } finally {
-                    // Closing the input stream will trigger connection release
-                    try {
-                        instream.close();
-                    } catch (Exception e) {
-                        // Ignore
-                    }
-                }
-            }
-        } catch (NamingException e) {
-            // Lookup of destination failed
-            String errorMessage = "Lookup of destination failed with reason: "
-                    + e.getMessage()
-                    + ". See "
-                    + "logs for details. Hint: Make sure to have the destination "
-                    + destinationName + " configured.";
-            LOGGER.error("Lookup of destination failed", e);
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    errorMessage);
+            InputStream instream = urlConnection.getInputStream();
+            OutputStream outstream = response.getOutputStream();
+            copyStream(instream, outstream);
         } catch (Exception e) {
             // Connectivity operation failed
             String errorMessage = "Connectivity operation failed with reason: "
                     + e.getMessage()
                     + ". See "
-                    + "logs for details.";
+                    + "logs for details. Hint: Make sure to have an HTTP proxy configured in your "
+                    + "local environment in case your environment uses "
+                    + "an HTTP proxy for the outbound Internet "
+                    + "communication.";
             LOGGER.error("Connectivity operation failed", e);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     errorMessage);
-        } finally {
-            // When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate
-            // deallocation of all system resources
-            if (httpClient != null) {
-                httpClient.getConnectionManager().shutdown();
-            }
+        }
+    }
+
+    private Proxy getProxy(String proxyType) {
+        String proxyHost = null;
+        int proxyPort;
+
+        if (ON_PREMISE_PROXY.equals(proxyType)) {
+            // Get proxy for on-premise destinations
+            proxyHost = System.getenv("HC_OP_HTTP_PROXY_HOST");
+            proxyPort = Integer.parseInt(System.getenv("HC_OP_HTTP_PROXY_PORT"));
+        } else {
+            // Get proxy for internet destinations
+            proxyHost = System.getProperty("https.proxyHost");
+            proxyPort = Integer.parseInt(System.getProperty("https.proxyPort"));
+        }
+
+        return new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
+    }
+
+    private void injectHeader(HttpURLConnection urlConnection, String proxyType) {
+        if (ON_PREMISE_PROXY.equals(proxyType)) {
+            // Insert header for on-premise connectivity with the consumer account name
+            urlConnection.setRequestProperty("SAP-Connectivity-ConsumerAccount",
+                    tenantContext.getTenant().getAccount().getId());
+        }
+    }
+
+    private void copyStream(InputStream inStream, OutputStream outStream) throws IOException {
+        byte[] buffer = new byte[COPY_CONTENT_BUFFER_SIZE];
+        int len;
+        while ((len = inStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, len);
         }
     }
 }

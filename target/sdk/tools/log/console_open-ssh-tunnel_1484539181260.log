@@ -1,0 +1,49 @@
+2017-01-16 09:29:41,544 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --vm-id aed1404f-a8ff-469b-9baf-4cbc2f551e46 --account hcppm --host eu1.hana.ondemand.com --user i048564
+2017-01-16 09:29:42,841 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [open-ssh-tunnel]
+2017-01-16 09:29:43,512 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-java-web-tomcat7.2.65.5.tmp]
+2017-01-16 09:29:43,512 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] init() finished for [671] ms
+2017-01-16 09:30:22,160 INFO  [main] com.sap.cloud.sshtunnel.client.proxyagent.DaemonProcessController: Timeout reached. Did not receive eyecatch com.sap.cloud.sshtunnel.client.proxyagent.TunnelProcessMBean:started
+2017-01-16 09:30:25,163 INFO  [main] com.sap.cloud.sshtunnel.client.proxyagent.DaemonProcessController: Background process did not return exit value within 3000 ms
+2017-01-16 09:31:07,264 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [open-ssh-tunnel] cleanup() finished for [0] ms
+2017-01-16 09:31:07,282 FATAL [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: (!) ERROR: Connection refused to host: 192.168.56.1; nested exception is: 
+	java.net.ConnectException: Connection timed out: connect
+com.sap.jpaas.infrastructure.console.exception.CommandException: Connection refused to host: 192.168.56.1; nested exception is: 
+	java.net.ConnectException: Connection timed out: connect
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.run(OpenSSHTunnelCommand.java:88)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:183)
+	at com.sap.jpaas.infrastructure.console.CommandManager.run(CommandManager.java:144)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.executeCommand(ConsoleClient.java:236)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.run(ConsoleClient.java:182)
+	at com.sap.jpaas.infrastructure.console.ConsoleClient.main(ConsoleClient.java:79)
+Caused by: java.rmi.ConnectException: Connection refused to host: 192.168.56.1; nested exception is: 
+	java.net.ConnectException: Connection timed out: connect
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.invoke(UnicastRef.java:130)
+	at javax.management.remote.rmi.RMIServerImpl_Stub.newClient(Unknown Source)
+	at javax.management.remote.rmi.RMIConnector.getConnection(RMIConnector.java:2430)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:308)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)
+	at com.sap.cloud.sshtunnel.client.proxyagent.TunnelProcessClient.connectToProxyAgent(TunnelProcessClient.java:128)
+	at com.sap.cloud.sshtunnel.client.proxyagent.TunnelProcessClient.getProxyAgentMBean(TunnelProcessClient.java:92)
+	at com.sap.cloud.sshtunnel.client.proxyagent.TunnelProcessClient.setServerName(TunnelProcessClient.java:85)
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.setServerName(OpenSSHTunnelCommand.java:181)
+	at com.sap.cloud.sshtunnel.cmd.OpenSSHTunnelCommand.run(OpenSSHTunnelCommand.java:80)
+	... 5 more
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:148)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 17 more
