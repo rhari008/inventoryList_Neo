@@ -1,0 +1,5 @@
+sdk.name=Java EE 6 Web Profile
+runtime.id=neo-javaee6-wp
+release.version=2.99.12
+runtime.version=2.99.12
+structure.version=8.0.0

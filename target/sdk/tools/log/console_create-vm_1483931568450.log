@@ -1,0 +1,11 @@
+2017-01-09 08:42:49,077 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Arguments:   --size x-small --name hcppm --account hcppm --host https://eu1.hana.ondemand.com --user i048564
+2017-01-09 08:42:51,228 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Starting execution of command [create-vm]
+2017-01-09 08:42:52,042 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.ConsoleLogger: No SDK status file for your configuration was found. A version validity check will be performed.
+2017-01-09 08:42:52,043 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.ConsoleLogger: Currently running SDK version validity check for user SDK version: 2.99.12, landscape: eu1.hana.ondemand.com and runtime: neo-javaee6-wp
+2017-01-09 08:42:55,256 ERROR [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Status cannot be obtained within 4 seconds!
+2017-01-09 08:42:55,744 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.ConsoleLogger: Attempting to create status file: C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-javaee6-wp.2.99.12.tmp
+2017-01-09 08:42:55,746 INFO  [pool-2-thread-1] com.sap.jpaas.infrastructure.console.PropertyFileProvider: Loaded properties file [C:\Users\i048564\AppData\Local\Temp\sdkcheck.eu1.hana.ondemand.com.neo-javaee6-wp.2.99.12.tmp]
+2017-01-09 08:42:55,752 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [create-vm] init() finished for [4523] ms
+2017-01-09 08:43:25,239 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [create-vm] run() finished for [29486] ms
+2017-01-09 08:43:25,240 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [create-vm] cleanup() finished for [0] ms
+2017-01-09 08:43:25,241 INFO  [main] com.sap.jpaas.infrastructure.console.ConsoleLogger: Command [create-vm] finished successfully for [34012] ms

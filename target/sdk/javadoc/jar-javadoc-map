@@ -1,0 +1,20 @@
+# External JavaDoc URLs per JAR
+chemistry-opencmis-client-api-0.13.0.jar = http://chemistry.apache.org/java/0.13.0/maven/apidocs/
+chemistry-opencmis-commons-api-0.13.0.jar = http://chemistry.apache.org/java/0.13.0/maven/apidocs/
+geronimo-jcdi_1.0_spec-1.0.jar = http://docs.oracle.com/javaee/7/api/
+httpclient-4.1.3.jar = http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs
+httpcore-4.1.4.jar = http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs
+javax.annotation-1.1.0.v201108011116.jar = http://docs.oracle.com/javaee/7/api/
+javax.ejb-3.1.1.jar = http://docs.oracle.com/javaee/7/api/
+javax.el-api-2.2.1.jar = http://docs.oracle.com/javaee/7/api/
+javax.faces-2.1.18.jar = http://docs.oracle.com/javaee/7/api/
+javax.inject-1.jar = http://docs.oracle.com/javaee/7/api/
+javax.persistence-2.0.5.jar = http://docs.oracle.com/javaee/7/api/
+javax.servlet-3.1-b33.jar = http://docs.oracle.com/javaee/7/api/
+javax.servlet.jsp-2.2.0.v201112011158.jar = http://docs.oracle.com/javaee/7/api/
+javax.servlet.jsp.jstl-1.2.0.v201105211821.jar = http://docs.oracle.com/javaee/7/api/
+javax.transaction-1.1.1.v201105210645.jar = http://docs.oracle.com/javaee/7/api/
+javax.websocket-api-1.1.jar = http://docs.oracle.com/javaee/7/api/
+mail-1.4.5.jar = http://docs.oracle.com/javaee/7/api/
+slf4j-api-1.7.2.jar = http://www.slf4j.org/apidocs/
+validation-api-1.0.0.GA.jar = http://docs.oracle.com/javaee/7/api/
