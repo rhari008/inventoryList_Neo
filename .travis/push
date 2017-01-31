@@ -20,7 +20,7 @@ echo Creating destination
 echo =========================================================
 URL=https\://inventorylist$ACCOUNT.$LANDSCAPE_HOST/InventoryList-0.0.1
 echo "The URL is $URL"
-echo "URL=$URL" >> $FILENAME_DEST_IOTMMS
+echo "URL=$URL" >> $FILENAME_DEST
 $NEO put-destination -a "$ACCOUNT" \
        -h "$LANDSCAPE_HOST" \
        -u "$DEPLOY_USERNAME" \
@@ -36,7 +36,7 @@ $NEO deploy -a "$ACCOUNT" \
        -h "$LANDSCAPE_HOST" \
        -u "$DEPLOY_USERNAME" \
        -p "$DEPLOY_PASSWORD" \
-       -s ./target/demorobot.war
+       -s ./target/InventoryList-0.0.1.war
 
 echo =========================================================
 echo Binding "$APP_NAME" to "$HANADB_NAME" with user "$HANADB_USER"
