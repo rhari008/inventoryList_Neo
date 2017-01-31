@@ -1,0 +1,6 @@
+Name=inventorylist
+ProxyType=Internet
+Type=HTTP
+Authentication=AppToAppSSO
+WebIDEEnabled=true
+WebIDEUsage=odata_gen

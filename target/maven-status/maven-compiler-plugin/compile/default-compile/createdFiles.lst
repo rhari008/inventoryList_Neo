@@ -1,0 +1,4 @@
+com\sap\cloud\sample\inventory\api\DataConnectionService.class
+com\sap\cloud\sample\inventory\model\InventoryData.class
+com\sap\cloud\sample\inventory\api\ConnectivityServlet.class
+com\sap\cloud\sample\inventory\api\InventoryDataService.class

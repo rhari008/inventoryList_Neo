@@ -1,0 +1,62 @@
+#!/bin/bash
+
+APP_NAME=$1
+NEO=./target/sdk/tools/neo.sh
+
+FILENAME_DEST=./resources/destination_details.txt
+
+echo =========================================================
+echo Creating database "$HANADB_NAME" for user "$HANADB_USER"
+echo =========================================================
+$NEO create-db-hana -a "$ACCOUNT" \
+       -h "$LANDSCAPE_HOST" \
+       -u "$DEPLOY_USERNAME" \
+       -p "$DEPLOY_PASSWORD" \
+       -i "$HANADB_NAME" --dbsystem -trial-  \
+       --db-password "$HANADB_PASSWORD"
+
+echo =========================================================
+echo Creating destination
+echo =========================================================
+URL=https\://inventorylist$ACCOUNT.$LANDSCAPE_HOST/InventoryList-0.0.1
+echo "The URL is $URL"
+echo "URL=$URL" >> $FILENAME_DEST_IOTMMS
+$NEO put-destination -a "$ACCOUNT" \
+       -h "$LANDSCAPE_HOST" \
+       -u "$DEPLOY_USERNAME" \
+       -p "$DEPLOY_PASSWORD" \
+       --localpath $FILENAME_DEST
+
+
+echo =========================================================
+echo Deploying "$APP_NAME"
+echo =========================================================
+$NEO deploy -a "$ACCOUNT" \
+       -b "$APP_NAME" \
+       -h "$LANDSCAPE_HOST" \
+       -u "$DEPLOY_USERNAME" \
+       -p "$DEPLOY_PASSWORD" \
+       -s ./target/demorobot.war
+
+echo =========================================================
+echo Binding "$APP_NAME" to "$HANADB_NAME" with user "$HANADB_USER"
+echo =========================================================
+$NEO bind-db -a "$ACCOUNT" \
+       -b "$APP_NAME" \
+       -h "$LANDSCAPE_HOST" \
+       -u "$DEPLOY_USERNAME" \
+       -p "$DEPLOY_PASSWORD" \
+       -i "$HANADB_NAME" --db-user "$HANADB_USER" --db-password "$HANADB_PASSWORD"
+
+echo =========================================================
+echo Restarting app...
+echo =========================================================
+$NEO restart -a "$ACCOUNT" \
+             -b "$APP_NAME" \
+             -h "$LANDSCAPE_HOST" \
+             -u "$DEPLOY_USERNAME" \
+             -p "$DEPLOY_PASSWORD"
+
+echo =========================================================
+echo DEPLOYMENT FINISHED
+echo =========================================================

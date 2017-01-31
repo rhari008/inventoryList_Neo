@@ -1,0 +1,6 @@
+language: java
+
+after_script:
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_BRANCH == 'master' ]]; then bash .travis/push demos || exit $?; fi
+notifications:
+  email: true
