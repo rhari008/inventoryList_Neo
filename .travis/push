@@ -46,8 +46,7 @@ $NEO bind-db -a "$ACCOUNT" \
        -h "$LANDSCAPE_HOST" \
        -u "$DEPLOY_USERNAME" \
        -p "$DEPLOY_PASSWORD" \
-       -i "$HANADB_NAME" --db-user "$HANADB_USER" --db-password "$HANADB_PASSWORD"
-	   --java-version 7
+       -i "$HANADB_NAME" --db-user "$HANADB_USER" --db-password "$HANADB_PASSWORD" --java-version 6	   
 
 echo =========================================================
 echo Restarting app...
