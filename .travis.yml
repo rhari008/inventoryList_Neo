@@ -1,7 +1,7 @@
 language: java
 
 before_install:
-  - chmod +x *
+  - chmod +x ./target/sdk/tools/neo.sh
 
 after_script:
   - if [[ $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_BRANCH == 'master' ]]; then bash .travis/push demos || exit $?; fi
