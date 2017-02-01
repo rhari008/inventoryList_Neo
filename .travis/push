@@ -3,7 +3,7 @@
 APP_NAME="inventorylist"
 NEO=./target/sdk/tools/neo.sh
 
-FILENAME_DEST=./resources/destination_details.txt
+FILENAME_DEST=../resources/destination_details.txt
 
 echo =========================================================
 echo Creating database "$HANADB_NAME" for user "$HANADB_USER"
