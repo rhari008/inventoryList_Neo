@@ -1,0 +1,18 @@
+#!/bin/bash
+
+APP_NAME=$1
+NEO=./target/sdk/tools/neo.sh
+
+echo =========================================================
+echo Rolling update of the application "$APP_NAME"
+echo =========================================================
+$NEO rolling-update -a "$ACCOUNT" \
+             -b "$APP_NAME" \
+             -h "$LANDSCAPE_HOST" \
+             -u "$DEPLOY_USERNAME" \
+             -p "$DEPLOY_PASSWORD" \
+			 -s ./target/InventoryList-0.0.1.war
+
+echo =========================================================
+echo DEPLOYMENT FINISHED
+echo =========================================================

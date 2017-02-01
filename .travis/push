@@ -38,7 +38,6 @@ $NEO deploy -a "$ACCOUNT" \
        -u "$DEPLOY_USERNAME" \
        -p "$DEPLOY_PASSWORD" \
        -s ./target/InventoryList-0.0.1.war
-	   --java-version 6
 
 echo =========================================================
 echo Binding "$APP_NAME" to "$HANADB_NAME" with user "$HANADB_USER"
