@@ -20,6 +20,7 @@ echo Creating destination
 echo =========================================================
 URL=https\://inventorylist$ACCOUNT.$LANDSCAPE_HOST/InventoryList-0.0.1
 echo "URL=$URL"
+echo $FILENAME_DEST
 echo "URL=$URL" >> $FILENAME_DEST
 $NEO put-destination -a "$ACCOUNT" \
        -h "$LANDSCAPE_HOST" \
