@@ -3,7 +3,7 @@
 APP_NAME="inventorylist"
 NEO=./target/sdk/tools/neo.sh
 
-FILENAME_DEST=../resources/destination_details.txt
+FILENAME_DEST=./resources/destination_details.txt
 
 echo =========================================================
 echo Creating database "$HANADB_NAME" for user "$HANADB_USER"
@@ -21,7 +21,7 @@ echo =========================================================
 URL=https\://inventorylist$ACCOUNT.$LANDSCAPE_HOST/InventoryList-0.0.1
 echo "URL=$URL"
 echo $FILENAME_DEST
-echo "URL=$URL" >> "$FILENAME_DEST"
+echo 'URL=$URL' | sudo tee --append $FILENAME_DEST
 $NEO put-destination -a "$ACCOUNT" \
        -h "$LANDSCAPE_HOST" \
        -u "$DEPLOY_USERNAME" \
