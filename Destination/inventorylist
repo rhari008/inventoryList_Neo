@@ -1,0 +1,9 @@
+#
+#Mon May 07 07:52:46 UTC 2018
+Name=inventorylist
+URL=https\://inventorylist0hcpappsprog.ap1.hana.ondemand.com/InventoryList-0.0.1/
+ProxyType=Internet
+Type=HTTP
+WebIDEEnabled=true
+Authentication=AppToAppSSO
+WebIDEUsage=odata_gen
